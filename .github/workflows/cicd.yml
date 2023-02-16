@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Unit Tests
-        run: echo Testing your units... :|
+        run: echo Testing your units... :X
     
   deploy_dev:
     name: Deploy to dev 
