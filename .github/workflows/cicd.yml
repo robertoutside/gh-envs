@@ -51,7 +51,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-             npx semantic-release@18 --tag-format arc-v${version} --branches ['main']
+             npx semantic-release@18 --dry-run --tag-format 'arc-v${version}' --branches 'main'
       - name: Deploy
         run: echo Deploying...to...qa
             
