@@ -20,21 +20,7 @@ jobs:
     steps:
       - name: Run Unit Tests
         run: echo Testing your units... :X
-        
-  test_sr:
-    name: Test semantic-release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup Node Env
-        uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 18.x
-      - name: Release w/ Semantic-Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-             npx semantic-release@18 --tag-format arc-v${version}
-    
+           
   deploy_dev:
     name: Deploy to dev 
     if: github.event_name == 'pull_request'
@@ -57,12 +43,14 @@ jobs:
       url: 'http://qa.test.domain'
     steps:
       - name: Setup Node Env
-        uses: actions/setup-node@3.6.0
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: 18.x
-      - name: Setup Semantic-Release
+      - name: Release w/ Semantic-Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-             npx semantic-release@18
+             npx semantic-release@18 --tag-format arc-v${version} --branches ['main']
       - name: Deploy
         run: echo Deploying...to...qa
             
