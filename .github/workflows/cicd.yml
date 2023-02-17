@@ -20,6 +20,18 @@ jobs:
     steps:
       - name: Run Unit Tests
         run: echo Testing your units... :X
+        
+  test_sr:
+    name: Test semantic-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node Env
+        uses: actions/setup-node@3.6.0
+        with:
+          node-version: 18.x
+      - name: Setup Semantic-Release
+        run: |
+             npx semantic-release@18
     
   deploy_dev:
     name: Deploy to dev 
@@ -42,6 +54,13 @@ jobs:
       name: qa
       url: 'http://qa.test.domain'
     steps:
+      - name: Setup Node Env
+        uses: actions/setup-node@3.6.0
+        with:
+          node-version: 18.x
+      - name: Setup Semantic-Release
+        run: |
+             npx semantic-release@18
       - name: Deploy
         run: echo Deploying...to...qa
             
