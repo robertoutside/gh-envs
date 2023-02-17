@@ -29,9 +29,11 @@ jobs:
         uses: actions/setup-node@v3.6.0
         with:
           node-version: 18.x
-      - name: Setup Semantic-Release
+      - name: Release w/ Semantic-Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-             npx semantic-release@18
+             npx semantic-release@18 --tag-format arc-v${version}
     
   deploy_dev:
     name: Deploy to dev 
