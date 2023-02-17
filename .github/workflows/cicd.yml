@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node Env
-        uses: actions/setup-node@3.6.0
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: 18.x
       - name: Setup Semantic-Release
