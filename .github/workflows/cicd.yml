@@ -54,7 +54,7 @@ jobs:
              --plugins '@semantic-release/commit-analyzer',\
              '@semantic-release/release-notes-generator',\
              '@semantic-release/github' \
-             --tag-format 'arc-v${version}' \
+             --tag-format 'release-v${version}' \
              --branches 'main'
     
   deploy_qa:
