@@ -33,7 +33,7 @@ jobs:
       - name: Deploy
         run: echo Deploying...to...dev
         
-  create_release: # TODO add ECR push
+  create_release: # TODO add ECR push from build output
     name: Create GH Release
     if: github.event.ref == 'refs/heads/main'
     needs: [build, test]
@@ -51,7 +51,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
              npx semantic-release@18 \
-             --plugins '@semantic-release/commit-analyzer','@semantic-release/release-notes-generator' \
+             --plugins '@semantic-release/commit-analyzer',\
+             '@semantic-release/release-notes-generator',\
+             '@semantic-release/github' \
              --tag-format 'arc-v${version}' \
              --branches 'main'
     
