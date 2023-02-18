@@ -85,7 +85,7 @@ jobs:
     needs: [deploy_staging]
     runs-on: ubuntu-latest
     environment: 
-      name: staging
+      name: prod
       url: 'http://test.domain'
     steps:
       - name: Deploy
