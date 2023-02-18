@@ -8,7 +8,6 @@
   jobs:
     deploy_qa:
       name: Deploy to qa 
-#       if: github.event.ref == 'refs/tags/release-v**' # this is always the case now
       runs-on: ubuntu-latest
       environment: 
         name: qa
