@@ -23,7 +23,7 @@ jobs:
            
   deploy_dev:
     name: Deploy to dev 
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' || github.event.ref == 'refs/heads/main'
     needs: [build, test]
     runs-on: ubuntu-latest
     environment: 
@@ -32,17 +32,14 @@ jobs:
     steps:
       - name: Deploy
         run: echo Deploying...to...dev
-    
-  deploy_qa:
-    name: Deploy to qa 
+        
+  create_release: # TODO add ECR push
+    name: Create GH Release
     if: github.event.ref == 'refs/heads/main'
     needs: [build, test]
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    environment: 
-      name: qa
-      url: 'http://qa.test.domain'
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node Env
@@ -57,6 +54,16 @@ jobs:
              --plugins '@semantic-release/commit-analyzer','@semantic-release/release-notes-generator' \
              --tag-format 'arc-v${version}' \
              --branches 'main'
+    
+  deploy_qa:
+    name: Deploy to qa 
+    if: github.event.ref == 'refs/heads/main'
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    environment: 
+      name: qa
+      url: 'http://qa.test.domain'
+    steps:
       - name: Deploy
         run: echo Deploying...to...qa
             
