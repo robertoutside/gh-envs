@@ -1,4 +1,5 @@
   name: cicd for releases
+  
   on:
     release:
       type: [ released ]
