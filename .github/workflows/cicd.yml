@@ -50,7 +50,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-             npx semantic-release@18 --dry-run \
+             npx semantic-release@18 \
              --plugins '@semantic-release/commit-analyzer','@semantic-release/release-notes-generator' \
              --tag-format 'arc-v${version}' \
              --branches 'main'
