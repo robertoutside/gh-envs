@@ -5,7 +5,7 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/github",
     ["@semantic-release/exec", {
-      "publishCmd": "echo 'release-tag=${nextRelease.version}\n' >> $GITHUB_OUTPUT"
+      "verifyReleaseCmd": "echo 'release-tag=${nextRelease.gitTag}\n' >> $GITHUB_OUTPUT"
     }],
   ],
   "tagFormat": "release-v${version}"
