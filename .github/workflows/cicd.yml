@@ -54,5 +54,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+             # install non-default semantic-release plugin
+             npm install @semantic-release/exec
              # uses .releaserc for configuration
              npx semantic-release@18
