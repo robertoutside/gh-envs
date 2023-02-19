@@ -58,8 +58,8 @@ jobs:
              --plugins '@semantic-release/commit-analyzer',\
              '@semantic-release/release-notes-generator',\
              '@semantic-release/github', \
-             '["@semantic-release/exec", {
-               "publishCmd": "echo "release-tag=${nextRelease.version}\n" >> $GITHUB_OUTPUT"
+             '["@semantic-release/exec", { \
+               "publishCmd": "echo "release-tag=${nextRelease.version}\n" >> $GITHUB_OUTPUT" \
              }]' \
              --tag-format 'release-v${version}' \
              --branches 'main'
