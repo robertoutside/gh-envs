@@ -62,7 +62,9 @@ jobs:
              # uses .releaserc for configuration
              npx semantic-release@18
       - name: Summary update
-        run: echo "${nextRelease.gitTag}" >> $GITHUB_STEP_SUMMARY
+        env:
+          RELEASE_TAG: ${{ steps.semantic-release.outputs.release-tag }}
+        run: echo "$RELEASE_TAG" >> $GITHUB_STEP_SUMMARY
 
   deploy_qa:
     name: Deploy to qa
