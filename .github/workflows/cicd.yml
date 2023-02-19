@@ -61,6 +61,8 @@ jobs:
              npm install @semantic-release/exec
              # uses .releaserc for configuration
              npx semantic-release@18
+      - name: Summary update
+        run: echo "${nextRelease.gitTag}" >> $GITHUB_STEP_SUMMARY
 
   deploy_qa:
     name: Deploy to qa
@@ -71,7 +73,7 @@ jobs:
       url: 'http://qa.test.domain'
     steps:
       - name: Deploy
-        run: echo 'Deploying...to...qa $GITHUB_REF with release-tag ${{needs.create_release.outputs.release-tag}}'
+        run: echo "Deploying...to...qa $GITHUB_REF with release-tag ${{needs.create_release.outputs.release-tag}}"
 
   deploy_staging:
     name: Deploy to staging 
