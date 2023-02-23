@@ -17,7 +17,7 @@ jobs:
 
   deploy_qa:
     name: Deploy to qa
-    needs: [deploy_dev]
+#     needs: [deploy_dev]
     runs-on: ubuntu-latest
     environment: 
       name: qa
@@ -28,7 +28,7 @@ jobs:
 
   deploy_staging:
     name: Deploy to staging 
-    needs: [deploy_qa]
+#     needs: [deploy_qa]
     runs-on: ubuntu-latest
     environment: 
       name: staging
@@ -39,7 +39,7 @@ jobs:
 
   deploy_prod:
     name: Deploy to prod
-    needs: [deploy_staging]
+#     needs: [deploy_staging]
     runs-on: ubuntu-latest
     environment: 
       name: prod
