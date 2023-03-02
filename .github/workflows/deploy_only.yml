@@ -8,7 +8,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        version: [10, 12, 14]
+        env: [dev, qa, staging, prod]
 #     name: Deploy to ...? 
     runs-on: ubuntu-latest
     environment: 
